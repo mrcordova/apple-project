@@ -25,18 +25,18 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-func unixTask() {
-    let script = try! NSUserUnixTask(url: URL(fileURLWithPath: "/bin/sh"))
-    let stdout = FileHandle.standardOutput
-    script.standardOutput = stdout
-    script.execute(withArguments: ["/Users/noahcordova/Documents/apple-project/pokelist.sh"]){
-        error in
-        if let error = error {
-            print("Failed", error)
-        }
-        exit(0)
-    }
-}
+//func unixTask() {
+//    let script = try! NSUserUnixTask(url: URL(fileURLWithPath: "/bin/sh"))
+//    let stdout = FileHandle.standardOutput
+ //   script.standardOutput = stdout
+ //   script.execute(withArguments: ["/Users/noahcordova/Documents/apple-project/pokelist.sh"]){
+ //       error in
+//        if let error = error {
+//            print("Failed", error)
+ //       }
+ //       exit(0)
+ //   }
+//}
 
 func downloadPokeData() {
     let task = Process()
