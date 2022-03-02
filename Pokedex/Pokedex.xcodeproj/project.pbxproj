@@ -72,6 +72,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83285AAD27CED9EA00EB54C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		9ADC865827CEB3440041AADA = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +102,7 @@
 		9ADC866327CEB3440041AADA /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				83285AAD27CED9EA00EB54C9 /* Resources */,
 				9ADC866427CEB3440041AADA /* PokedexApp.swift */,
 				9ADC866627CEB3440041AADA /* ContentView.swift */,
 				9ADC866827CEB3460041AADA /* Assets.xcassets */,
