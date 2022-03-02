@@ -8,19 +8,16 @@ import Foundation
 import SwiftUI
 
 
-struct PokemonList: Codable, Identifiable {
-    var id: Int
+struct PokemonList: Codable {
+    
     let count: Int
     let next: String
-    let prevoius: String
     let results: [PokemonListItem]
     
     enum CodingKeys: String, CodingKey {
-        case id = "Id"
-        case count = "Count"
-        case next = "Next"
-        case prevoius = "Previous"
-        case results = "Results"
+        case count = "count"
+        case next = "next"
+        case results = "results"
     }
 }
 

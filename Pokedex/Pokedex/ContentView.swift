@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
+            
             Button(action: {
             downloadPokeData()
             }, label: {Text("Test Agian")}).padding()
@@ -64,5 +65,6 @@ func downloadPokeData() {
     let ds = String(data:d, encoding: String.Encoding.utf8)
     print("terminal out: \(ds!)")
     print("execution complete")
+
 }
 
