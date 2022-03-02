@@ -13,8 +13,8 @@ struct PokemonListRow: View {
     var body: some View {
         
         HStack {
-            Text("\(pokemonListItem.name)\n \(pokemonListItem.url)")
-        }
+            Text("\(pokemonListItem.name)").padding()
+        }.frame(width: 300, height: 50, alignment: Alignment.bottomLeading)
         
         
     }
