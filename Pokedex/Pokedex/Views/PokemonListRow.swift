@@ -13,8 +13,13 @@ struct PokemonListRow: View {
     var body: some View {
         
         HStack {
-            Text("\(pokemonListItem.name)").padding()
-        }.frame(width: 300, height: 50, alignment: Alignment.bottomLeading)
+            Text("\(pokemonListItem.name)")
+                .padding()
+                .border(Color.red, width: 4)
+                .background(Color.white)
+                .foregroundColor(Color.blue).frame(maxWidth: .infinity, alignment: Alignment.leading)
+            Spacer()
+        }
         
         
     }
@@ -22,7 +27,11 @@ struct PokemonListRow: View {
 
 struct PokemonListRow_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonListRow(pokemonListItem: pokemonList.results[0])
+        Group {
+            PokemonListRow(pokemonListItem: pokemonList.results[0])
+            PokemonListRow(pokemonListItem: pokemonList.results[1])
+                
+        }.previewLayout(.fixed(width: 300, height: 50))
     }
 }
 
