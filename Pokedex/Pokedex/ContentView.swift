@@ -33,6 +33,7 @@ struct ContentView: View {
     
     var body: some View {
         PokeList()
+            .frame(width:800, height:600)
 //        VStack {
 //            Button(action: {
 //                self.getData()

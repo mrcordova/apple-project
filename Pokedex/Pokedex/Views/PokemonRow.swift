@@ -19,6 +19,7 @@ struct PokemonRow: View {
             Spacer()
         }
         .border(.primary)
+        .frame(width: 200)
     }
 }
 

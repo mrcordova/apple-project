@@ -15,7 +15,7 @@ struct PokeList: View {
                     PokemanDetails(pokemonName: pokemon.name)
                 } label: {
                     PokemonRow(pokemon: pokemon)
-                }
+                }        .frame(width:200)
             }
             .navigationTitle("Pokemon")
         }
