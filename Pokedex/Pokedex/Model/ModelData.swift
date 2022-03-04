@@ -9,9 +9,32 @@ import Foundation
 
 var pokemonList: PokemonList = load("pokemon.json")
 
+
+let APIUrl: String = "https://pokeapi.co/api/v2/pokemon/"
+
+
+
+func loadJson(fromURLString urlString: String,
+                      completion: @escaping (Result<Data, Error>) -> Void) {
+    if let url = URL(string: APIUrl + urlString ) {
+        let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            if let data = data {
+                completion(.success(data))
+            }
+        }
+        
+        urlSession.resume()
+    }
+}
+
+
+
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
-    
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
     else {
         fatalError("Couldn't find \(filename) in main bundle")

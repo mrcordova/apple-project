@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct PokemanDetails: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack{
+                Text("Name:")
+                Text("Bulbasaur")
+            }
+            HStack{
+                Text("Id:")
+                Text("1")
+            }
+            
+        }
     }
 }
 

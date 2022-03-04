@@ -7,13 +7,39 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    @State var data = Pokemon(id: 1, base_experience: 65, height: 25, name: "charmander")
+    
+    func getData() {
+        let urlString = APIUrl + "bulbasaur"
+        let url = URL(string: urlString)
+        
+        URLSession.shared.dataTask(with: url!) { data, _, error in
+            DispatchQueue.main.async {
+                if let data = data {
+                    do{
+                        let decoder = JSONDecoder()
+                        let decodedData = try decoder.decode(Pokemon.self, from:data)
+                        self.data = decodedData
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+        }.resume()
+    }
+    
     var body: some View {
+        
         VStack {
-            
             Button(action: {
-            downloadPokeData()
-            }, label: {Text("Test Agian")}).padding()
+                self.getData()
+            }, label: {Text("Test")}).padding()
+            
+            Text("\(data.name)")
+            Text("\(data.height)")
         }
     }
 }
