@@ -32,15 +32,15 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
-        VStack {
-            Button(action: {
-                self.getData()
-            }, label: {Text("Test")}).padding()
-            
-            Text("\(data.name)")
-            Text("\(data.height)")
-        }
+        PokeList()
+//        VStack {
+//            Button(action: {
+//                self.getData()
+//            }, label: {Text("Test")}).padding()
+//
+//            Text("\(data.name)")
+//            Text("\(data.height)")
+//        }
     }
 }
 

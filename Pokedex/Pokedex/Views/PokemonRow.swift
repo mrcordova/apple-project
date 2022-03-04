@@ -18,6 +18,7 @@ struct PokemonRow: View {
             Text(pokemon.name.capitalized)
             Spacer()
         }
+        .border(.primary)
     }
 }
 
