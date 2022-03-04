@@ -11,7 +11,7 @@ struct PokeList: View {
     var body: some View {
         NavigationView {
             List (pokemonList.results, id: \.name){ pokemon in
-                NavigationLink{
+                NavigationLink {
                     PokemanDetails(pokemonName: pokemon.name)
                 } label: {
                     PokemonRow(pokemon: pokemon)

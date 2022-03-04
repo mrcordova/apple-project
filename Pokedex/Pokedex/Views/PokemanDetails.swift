@@ -11,7 +11,7 @@ struct PokemanDetails: View {
    
     var pokemonName: String
     
-    @State var data = Pokemon(id: 1, base_experience: 65, height: 25, name: "charmander")
+    @State var data: Pokemon?
     
     func getData() {
         let urlString = APIUrl + pokemonName
@@ -35,16 +35,53 @@ struct PokemanDetails: View {
     var body: some View {
         VStack {
             HStack{
-                Text("Name:")
-                Text(data.name)
+                if let unwrapped = data?.sprites.frontDefault {
+                    
+                    AsyncImage(url: URL(string: unwrapped)) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                        case .success(let image):
+                            image.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                 .frame(width: 125, height: 125)
+                        case .failure:
+                            Image(systemName: "photo")
+                        @unknown default:
+                            // Since the AsyncImagePhase enum isn't frozen,
+                            // we need to add this currently unused fallback
+                            // to handle any new cases that might be added
+                            // in the future:
+                            EmptyView()
+                        }
+                    }
+                }
+                
+                Spacer()
             }
             HStack{
-                Text("Id:")
-                Text(String(data.id))
+                Text("Name:")
+                if let unwrapped = data?.name {
+                    Text("Name: \(unwrapped)")
+                } else {
+                    Text("No data")
+                }
+                
+                Spacer()
             }
-            
+            HStack{
+                if let unwrapped = data?.baseExperience {
+                    Text("Base exp: \(unwrapped)")
+                } else {
+                    Text("No data")
+                }
+                
+                Spacer()
+            }
         }
         .onAppear(perform: getData)
+        
+        Spacer()
     }
 }
 

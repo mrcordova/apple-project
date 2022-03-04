@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var data = Pokemon(id: 1, base_experience: 65, height: 25, name: "charmander")
+    @State var data: Pokemon?
     
     func getData() {
         let urlString = APIUrl + "bulbasaur"
