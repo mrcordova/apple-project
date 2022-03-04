@@ -35,8 +35,7 @@ struct PokemanDetails: View {
     var body: some View {
         VStack {
             HStack{
-                if let unwrapped = data?.sprites.frontDefault {
-                    
+                if let unwrapped = data?.sprites.other?.officialArtwork.frontDefault {
                     AsyncImage(url: URL(string: unwrapped)) { phase in
                         switch phase {
                         case .empty:
@@ -45,6 +44,12 @@ struct PokemanDetails: View {
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
                                  .frame(width: 125, height: 125)
+                                 .clipShape(Circle())
+                                 .overlay {
+                                     Circle().stroke(.primary, lineWidth: 4)
+                                 }
+                                 .shadow(radius: 8)
+                                 .padding()
                         case .failure:
                             Image(systemName: "photo")
                         @unknown default:
@@ -56,31 +61,21 @@ struct PokemanDetails: View {
                         }
                     }
                 }
-                
-                Spacer()
             }
             HStack{
-                Text("Name:")
                 if let unwrapped = data?.name {
-                    Text("Name: \(unwrapped)")
+                    Text("\(unwrapped.capitalized)")
+                        .font(.largeTitle)
+                        
+                        
                 } else {
                     Text("No data")
                 }
-                
-                Spacer()
             }
-            HStack{
-                if let unwrapped = data?.baseExperience {
-                    Text("Base exp: \(unwrapped)")
-                } else {
-                    Text("No data")
-                }
-                
-                Spacer()
-            }
+            PokemonStats(pokemonDetails: data)
         }
         .onAppear(perform: getData)
-        
+        .padding()
         Spacer()
     }
 }
