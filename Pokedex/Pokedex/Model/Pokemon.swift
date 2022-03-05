@@ -339,7 +339,15 @@ struct Stat: Codable {
 }
 
 // MARK: - TypeElement
-struct TypeElement: Codable {
+struct TypeElement: Codable, Hashable {
+    static func == (lhs: TypeElement, rhs: TypeElement) -> Bool {
+        return lhs.type.name == rhs.type.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(type.name)
+    }
+    
     let slot: Int
     let type: Species
 }
