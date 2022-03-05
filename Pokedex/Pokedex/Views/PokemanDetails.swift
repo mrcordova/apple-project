@@ -72,6 +72,8 @@ struct PokemanDetails: View {
                     Text("No data")
                 }
             }
+            PokemonType(pokemonType: data)
+                .padding(.bottom, 10)
             PokemonStats(pokemonDetails: data)
         }
         .onAppear(perform: getData)

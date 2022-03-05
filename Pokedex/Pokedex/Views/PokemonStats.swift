@@ -54,7 +54,7 @@ struct PokemonStats: View {
                     Text("Speed: ")
                         .font(.headline)
                     if let unwrapped = pokemonDetails?.stats {
-                        Text(String(unwrapped[3].baseStat))
+                        Text(String(unwrapped[5].baseStat))
                     }
                     Spacer()
                 }
@@ -72,7 +72,7 @@ struct PokemonStats: View {
                     Text("Special Defense: ")
                         .font(.headline)
                     if let unwrapped = pokemonDetails?.stats {
-                        Text(String(unwrapped[5].baseStat))
+                        Text(String(unwrapped[3].baseStat))
                     }
                     Spacer()
                 }
