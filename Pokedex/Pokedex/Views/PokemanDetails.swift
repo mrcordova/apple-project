@@ -16,16 +16,18 @@ struct PokemanDetails: View {
     func getData() {
         let urlString = APIUrl + pokemonName
         let url = URL(string: urlString)
-        
+        print("Getting data for \(pokemonName)")
         URLSession.shared.dataTask(with: url!) { data, _, error in
             DispatchQueue.main.async {
                 if let data = data {
                     do{
                         let decoder = JSONDecoder()
+                        
                         let decodedData = try decoder.decode(Pokemon.self, from:data)
+                        print("Decoded?")
                         self.data = decodedData
                     } catch {
-                        print(error)
+                        print("Error!: \(error)")
                     }
                 }
             }
@@ -35,7 +37,10 @@ struct PokemanDetails: View {
     var body: some View {
         VStack {
             HStack{
-                if let unwrapped = data?.sprites.other?.officialArtwork.frontDefault {
+                
+                ///The official artwork looks much nicer, but there are more sprites available... 
+                //if let unwrapped = data?.sprites.other?.officialArtwork.frontDefault {
+                if let unwrapped = data?.sprites.frontDefault {
                     AsyncImage(url: URL(string: unwrapped)) { phase in
                         switch phase {
                         case .empty:
@@ -69,6 +74,7 @@ struct PokemanDetails: View {
                         
                         
                 } else {
+                    Text("Failed to load!")
                     Text("No data")
                 }
             }
