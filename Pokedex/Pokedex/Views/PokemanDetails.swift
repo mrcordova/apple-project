@@ -13,6 +13,7 @@ struct PokemanDetails: View {
     
     @State var data: Pokemon?
     
+    @State private var hasFocus = false
 
     func getData() {
         let urlString = APIUrl + pokemonName
@@ -52,10 +53,13 @@ struct PokemanDetails: View {
                                  .frame(width: 125, height: 125)
                                  .clipShape(Circle())
                                  .overlay {
-                                     Circle().stroke(.primary, lineWidth: 4)
+                                     Circle().stroke(self.hasFocus ? Color.accentColor : .primary, lineWidth: 4)
                                  }
                                  .shadow(radius: 8)
                                  .padding()
+                                 .onTapGesture {
+                                     self.hasFocus = !self.hasFocus
+                                 }
                         case .failure:
                             Image(systemName: "photo")
                         @unknown default:
