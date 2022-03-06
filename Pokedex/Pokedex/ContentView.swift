@@ -32,7 +32,10 @@ struct ContentView: View {
     } // do we still need this? - noah
     
     var body: some View {
-        Intro()
+        VStack {
+            Intro()
+        }
+        
     }
 }
 

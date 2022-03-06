@@ -13,6 +13,7 @@ struct PokemanDetails: View {
     
     @State var data: Pokemon?
     
+
     func getData() {
         let urlString = APIUrl + pokemonName
         let url = URL(string: urlString)
