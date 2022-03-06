@@ -8,12 +8,29 @@
 import SwiftUI
 
 struct Intro: View {
+    @State private var login = false
     var body: some View {
-        Button(action: {
-                       
-                 }, label: {Text("Btn")}).padding()
-       
         
+        VStack {
+            if !login {
+                LoginView(login: $login).frame(minWidth: 800, minHeight: 600)
+            }
+            if login {
+                PokeList()
+                   .frame(minWidth:800, minHeight:600)
+                
+            }
+            
+        }
+    }
+}
+
+struct LoginView: View {
+    @Binding var login: Bool
+    var body: some View {
+        VStack {
+            Button("Login") {self.login = true}
+        }
     }
 }
 

@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct PokeList: View {
+    
+   
     var body: some View {
+        
         NavigationView {
             List (pokemonList.results, id: \.name){ pokemon in
                 NavigationLink {

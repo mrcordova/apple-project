@@ -32,16 +32,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        PokeList()
-            .frame(minWidth:800, minHeight:600)
-//        VStack {
-//            Button(action: {
-//                self.getData()
-//            }, label: {Text("Test")}).padding()
-//
-//            Text("\(data.name)")
-//            Text("\(data.height)")
-//        }
+        Intro()
     }
 }
 
