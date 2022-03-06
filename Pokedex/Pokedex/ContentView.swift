@@ -54,8 +54,8 @@ func downloadPokeData() {
     let pipe = Pipe()
     task.standardOutput = pipe
     
-    task.currentDirectoryURL = URL(fileURLWithPath: "/Users/noahcordova/Documents/apple-project/")
-    let args = ["/Users/noahcordova/Documents/apple-project/pokelist.sh"]
+    task.currentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let args = ["pokelist.sh"]
 
     task.arguments = args
     
