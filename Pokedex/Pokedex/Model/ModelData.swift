@@ -42,7 +42,6 @@ func load<T: Decodable>(_ filename: String) -> T {
     
     do {
         data = try Data(contentsOf: file)
-        print(data)
     } catch {
         fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
     }
