@@ -29,7 +29,7 @@ struct ContentView: View {
                 }
             }
         }.resume()
-    }
+    } // do we still need this? - noah
     
     var body: some View {
         Intro()
